@@ -10,4 +10,6 @@ public class People {
 
     private String name;
     private String surname;
+    private int id;
+    
 }

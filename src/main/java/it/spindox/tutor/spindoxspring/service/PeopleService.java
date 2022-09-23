@@ -11,15 +11,15 @@ import org.springframework.stereotype.Service;
 public class PeopleService {
 
     public People getPeople() {
-        return new People("chiara","burato");
+        return new People("chiara","burato", 2);
     }
 
 
     public List<People> getListPeople() {
 
         List<People> listPeople = new ArrayList<People>();
-        listPeople.add(new People("chiara", "burato"));
-        listPeople.add(new People("chiara", "burato"));
+        listPeople.add(new People("chiara", "burato",1));
+        listPeople.add(new People("chiara", "burato",2));
         
         return listPeople;
     }
