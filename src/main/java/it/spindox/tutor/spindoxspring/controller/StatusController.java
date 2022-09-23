@@ -1,6 +1,7 @@
 package it.spindox.tutor.spindoxspring.controller;
 
-import it.spindox.tutor.spindoxspring.service.CustomService;
+import it.spindox.tutor.spindoxspring.model.Status;
+import it.spindox.tutor.spindoxspring.service.StatusService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,14 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
-public class TestController {
+public class StatusController {
 
-    private final CustomService service;
+    private final StatusService service;
 
-    @GetMapping(value="/hello")
-    public ResponseEntity<String> hello() {
-        String result = service.getResult();
-        return new ResponseEntity<>(result, HttpStatus.OK);
+    @GetMapping(value ="/status")
+    public ResponseEntity<Status> getStatus() {
+        return new ResponseEntity<>(service.getStatus(), HttpStatus.OK);
     }
 
 }
