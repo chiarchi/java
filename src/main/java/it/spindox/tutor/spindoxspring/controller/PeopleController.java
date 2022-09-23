@@ -1,5 +1,7 @@
 package it.spindox.tutor.spindoxspring.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +18,12 @@ public class PeopleController {
     private final PeopleService service;
 
     @GetMapping(value ="/person")
-    public ResponseEntity<People> getStatus() {
+    public ResponseEntity<People> getPerson() {
         return new ResponseEntity<>(service.getPeople(), HttpStatus.OK);
+    }
+
+    @GetMapping(value ="/people")
+    public ResponseEntity<List<People>> getPeople() {
+        return new ResponseEntity<>(service.getListPeople(), HttpStatus.OK);
     }
 }
