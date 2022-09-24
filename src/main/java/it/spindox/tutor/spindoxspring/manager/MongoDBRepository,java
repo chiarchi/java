@@ -1,0 +1,3 @@
+package it.spindox.tutor.spindoxspring.controller;
+
+public interface MongoDBRepository extends MongoRepository<Contact, String> { }
