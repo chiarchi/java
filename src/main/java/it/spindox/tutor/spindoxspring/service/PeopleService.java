@@ -23,4 +23,17 @@ public class PeopleService {
         
         return listPeople;
     }
+
+    public People findById(int id)
+    {
+        People people = new People("", "", 0);
+        
+        for (int i = 0; i < getListPeople().size(); i++) {
+            people = getListPeople().get(i);
+            if (people.getId()==id)
+            break;     
+          }
+
+        return people;
+    }
 }
