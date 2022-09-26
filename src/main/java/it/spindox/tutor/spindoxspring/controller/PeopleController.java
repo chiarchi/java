@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ch.qos.logback.core.joran.conditional.ElseAction;
+import ch.qos.logback.core.joran.conditional.ThenAction;
 import it.spindox.tutor.spindoxspring.model.People;
 import it.spindox.tutor.spindoxspring.service.PeopleService;
 import lombok.RequiredArgsConstructor;
@@ -59,6 +61,12 @@ public class PeopleController {
 
     @PutMapping(value = "/people/{id}")
     public void updatePeople(@PathVariable int id, @RequestBody People people) {
-         peopleService.saveOrUpdate(people);
+        Optional<People> peopleById = peopleService.findPeopleById(id);
+         if (peopleById.isPresent()) {
+            peopleService.saveOrUpdate(people);
+         } else {
+            System.out.println("people not found");
+         }
+         
     }
 }
