@@ -1,11 +1,7 @@
 package it.spindox.tutor.spindoxspring.controller;
-
-import java.util.List;
 import java.util.Optional;
-
 import it.spindox.tutor.spindoxspring.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,9 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import ch.qos.logback.core.joran.conditional.ElseAction;
-import ch.qos.logback.core.joran.conditional.ThenAction;
 import it.spindox.tutor.spindoxspring.model.People;
 import it.spindox.tutor.spindoxspring.service.PeopleService;
 import lombok.RequiredArgsConstructor;
@@ -61,12 +54,9 @@ public class PeopleController {
 
     @PutMapping(value = "/people/{id}")
     public void updatePeople(@PathVariable int id, @RequestBody People people) {
-        Optional<People> peopleById = peopleService.findPeopleById(id);
-         if (peopleById.isPresent()) {
-            peopleService.saveOrUpdate(people);
-         } else {
-            System.out.println("people not found");
-         }
-         
+
+        peopleService.findPeopleById(id);
+        peopleService.saveOrUpdate(people);
     }
+
 }

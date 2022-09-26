@@ -9,6 +9,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import it.spindox.tutor.spindoxspring.exception.ResourceNotFoundException;
 
 @Service
 public class PeopleService {
@@ -46,6 +47,7 @@ public class PeopleService {
     // Use repository.deleteById() to delete an Employee record
         public void deleteEmployeeById(int id) {
             repository.deleteById(id);
+            
         }
 
         public void saveOrUpdate(People employee) {
@@ -55,6 +57,8 @@ public class PeopleService {
          
         public Optional<People> findPeopleById(int id) {
      
+              repository.findById(id)
+             .orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
              return repository.findById(id);
          }
 
