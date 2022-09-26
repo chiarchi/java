@@ -5,6 +5,7 @@ import it.spindox.tutor.spindoxspring.repository.MongoDBRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class PeopleService {
         return listPeople;
     }
 
-    public People findById(int id)
+/*     public People findById(int id)
     {
         People people = new People("", "", 0);
         
@@ -40,7 +41,7 @@ public class PeopleService {
           }
 
         return people;
-    }
+    } */
 
     // Use repository.deleteById() to delete an Employee record
         public void deleteEmployeeById(int id) {
@@ -50,4 +51,15 @@ public class PeopleService {
         public void saveOrUpdate(People employee) {
             repository.save(employee);
          }
+
+         
+        public Optional<People> findPeopleById(int id) {
+     
+             return repository.findById(id);
+         }
+
+        public Iterable<People> findPeople() {
+     
+            return repository.findAll();
+        }
 }

@@ -1,6 +1,8 @@
 package it.spindox.tutor.spindoxspring.controller;
 
 import java.util.List;
+import java.util.Optional;
+
 import it.spindox.tutor.spindoxspring.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,32 +37,28 @@ public class PeopleController {
         return new ResponseEntity<>(service.getPeople(), HttpStatus.OK);
     }
 
-    @GetMapping(value ="/people")
-    public ResponseEntity<List<People>> getPeople() {
-        System.out.print("all");
-        return new ResponseEntity<>(service.getListPeople(), HttpStatus.OK);
-    }
-
     @GetMapping("/people/{id}")
-    People one(@PathVariable("id") int id) {
-
-        People people = service.findById(id);
-        System.out.print(people.getName());
-        return people;
+    public Optional<People> getPeople(@PathVariable("id") int id) {
+        return peopleService.findPeopleById(id);
     }
 
-    @GetMapping("/peopleDB")
-    public List<People> list() {
-        return peopleRepository.findAll();
+    @GetMapping("/people")
+    public Iterable<People> listPeople() {
+        return peopleService.findPeople();
     }
 
-    @PostMapping("/peopleDB")
+    @PostMapping("/people")
     public void addPerson(@RequestBody People employee) {
         peopleService.saveOrUpdate(employee);   
     }
 
-    @DeleteMapping("/peopleDB/{id}")
+    @DeleteMapping("/people/{id}")
     public void deletePerson(@PathVariable("id") int id) {
         peopleService.deleteEmployeeById(id);
+    }
+
+    @PutMapping(value = "/people/{id}")
+    public void updatePeople(@PathVariable int id, @RequestBody People people) {
+         peopleService.saveOrUpdate(people);
     }
 }
