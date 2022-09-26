@@ -1,5 +1,8 @@
 package it.spindox.tutor.spindoxspring.controller;
 import java.util.Optional;
+
+import javax.validation.Valid;
+
 import it.spindox.tutor.spindoxspring.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,7 +46,7 @@ public class PeopleController {
     }
 
     @PostMapping("/people")
-    public void addPerson(@RequestBody People employee) {
+    public void addPerson(@Valid @RequestBody People employee) {
         peopleService.saveOrUpdate(employee);   
     }
 
@@ -53,7 +56,7 @@ public class PeopleController {
     }
 
     @PutMapping(value = "/people/{id}")
-    public void updatePeople(@PathVariable int id, @RequestBody People people) {
+    public void updatePeople(@PathVariable int id, @Valid @RequestBody People people) {
 
         peopleService.findPeopleById(id);
         peopleService.saveOrUpdate(people);
