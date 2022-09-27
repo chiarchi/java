@@ -18,7 +18,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class People {
+public class People extends Object{
     @NotBlank(message = "name is mandatory")
     private String name;
 

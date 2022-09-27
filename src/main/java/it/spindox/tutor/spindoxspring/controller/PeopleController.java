@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import it.spindox.tutor.spindoxspring.model.People;
 import it.spindox.tutor.spindoxspring.service.PeopleService;
-import it.spindox.tutor.spindoxspring.service.ProducerService;
+import it.spindox.tutor.spindoxspring.service.clientService;
 import lombok.RequiredArgsConstructor;
 
 
 @RequiredArgsConstructor
 @RestController
-public class PeopleController {
+public class PeopleController{
     private final PeopleService service;
 
     @Autowired
@@ -30,9 +30,9 @@ public class PeopleController {
 
     @Autowired
     PeopleService peopleService;
-    
+
     @Autowired
-    private ProducerService producerService;
+    private clientService ClientService;
 
     @GetMapping(value ="/person")
     public ResponseEntity<People> getPerson() {
@@ -52,7 +52,7 @@ public class PeopleController {
     @PostMapping("/people")
     public void addPerson(@Valid @RequestBody People people) {
         peopleService.saveOrUpdate(people);  
-        producerService.sendMessage(people);
+        ClientService.sendMessage(people);
         System.out.println(people.getName());
     }
 
