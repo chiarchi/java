@@ -1,5 +1,6 @@
 package it.spindox.tutor.spindoxspring.service;
 
+import it.spindox.tutor.spindoxspring.manager.ChannelManager;
 import it.spindox.tutor.spindoxspring.model.People;
 import it.spindox.tutor.spindoxspring.repository.MongoDBRepository;
 
@@ -7,18 +8,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import it.spindox.tutor.spindoxspring.exception.ResourceNotFoundException;
 
 @Service
+@RequiredArgsConstructor
 public class PeopleService {
+
+    private final ChannelManager manager;
 
 
     @Autowired
    MongoDBRepository repository;
     public People getPeople() {
         return new People("chiara","burato", 2);
+    }
+
+    public void sendPeople(People people) {
+
+        manager.sendMessage(new People("","", 3));
     }
 
 

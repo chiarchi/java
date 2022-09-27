@@ -18,7 +18,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class People extends Object{
+public class People implements SpindoxMessage {
     @NotBlank(message = "name is mandatory")
     private String name;
 
@@ -27,5 +27,5 @@ public class People extends Object{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    
+
 }
