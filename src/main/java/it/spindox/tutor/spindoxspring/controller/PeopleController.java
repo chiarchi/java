@@ -22,6 +22,7 @@ import it.spindox.tutor.spindoxspring.service.PeopleService;
 import lombok.RequiredArgsConstructor;
 
 
+
 @RequiredArgsConstructor
 @RestController
 public class PeopleController{
