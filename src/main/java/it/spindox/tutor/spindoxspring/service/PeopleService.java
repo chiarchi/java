@@ -2,7 +2,7 @@ package it.spindox.tutor.spindoxspring.service;
 
 import it.spindox.tutor.spindoxspring.manager.ChannelManager;
 import it.spindox.tutor.spindoxspring.model.People;
-import it.spindox.tutor.spindoxspring.repository.MongoDBRepository;
+import it.spindox.tutor.spindoxspring.repository.MongoDBRep;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,14 +21,9 @@ public class PeopleService {
 
 
     @Autowired
-   MongoDBRepository repository;
+   MongoDBRep repository;
     public People getPeople() {
         return new People("chiara","burato", 2);
-    }
-
-    public void sendPeople(People people) {
-
-        manager.sendMessage(new People("","", 3));
     }
 
 
@@ -65,14 +60,14 @@ public class PeopleService {
          }
 
          
-        public Optional<People> findPeopleById(int id) {
+        public Optional<Object> findPeopleById(int id) {
      
               repository.findById(id)
              .orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
              return repository.findById(id);
          }
 
-        public Iterable<People> findPeople() {
+        public List<Object> findPeople() {
      
             return repository.findAll();
         }

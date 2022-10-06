@@ -27,5 +27,4 @@ public class People implements SpindoxMessage {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
 }

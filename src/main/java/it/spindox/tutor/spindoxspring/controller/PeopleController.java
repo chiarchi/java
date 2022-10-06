@@ -1,4 +1,5 @@
 package it.spindox.tutor.spindoxspring.controller;
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -14,9 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import it.spindox.tutor.spindoxspring.adapter.ChannelAdapter;
 import it.spindox.tutor.spindoxspring.model.People;
 import it.spindox.tutor.spindoxspring.service.PeopleService;
-import it.spindox.tutor.spindoxspring.service.clientService;
 import lombok.RequiredArgsConstructor;
 
 
@@ -26,7 +28,7 @@ public class PeopleController{
     private final PeopleService service;
 
     @Autowired
-    MongoDBRepository peopleRepository;
+    MongoDBRep peopleRepository;
 
     @Autowired
     PeopleService peopleService;
@@ -40,12 +42,12 @@ public class PeopleController{
     }
 
     @GetMapping("/people/{id}")
-    public Optional<People> getPeople(@PathVariable("id") int id) {
+    public Optional<Object> getPeople(@PathVariable("id") int id) {
         return peopleService.findPeopleById(id);
     }
 
     @GetMapping("/people")
-    public Iterable<People> listPeople() {
+    public List<Object> listPeople() {
         return peopleService.findPeople();
     }
 

@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import it.spindox.tutor.spindoxspring.model.People;
-import it.spindox.tutor.spindoxspring.repository.MongoDBRepository;
+import it.spindox.tutor.spindoxspring.repository.MongoDBRep;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 @Service
@@ -20,7 +20,7 @@ public class clientService {
    
 
     @Autowired
-    MongoDBRepository repository;
+    MongoDBRep repository;
     private RabbitTemplate rabbitTemplate;
     
     @Value("${spring.rabbitmq.exchange}")
@@ -30,7 +30,7 @@ public class clientService {
     private String routingkey;
 
     @Autowired
-    public clientService(MongoDBRepository MongoDBRepository, RabbitTemplate rabbitTemplate) {
+    public clientService(MongoDBRep MongoDBRepository, RabbitTemplate rabbitTemplate) {
         this.repository = MongoDBRepository;
         this.rabbitTemplate = rabbitTemplate;
     }

@@ -65,6 +65,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-amqp</artifactId>
 		</dependency>
+
+				<!-- https://mvnrepository.com/artifact/org.danekja/jdk-serializable-functional -->
+		<dependency>
+			<groupId>org.danekja</groupId>
+			<artifactId>jdk-serializable-functional</artifactId>
+			<version>1.8.1</version>
+		</dependency>
+
 	</dependencies>
 
 
