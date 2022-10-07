@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @ComponentScan(basePackages = {"it.spindox.tutor.spindoxspring"})
 public class Application {
 
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}

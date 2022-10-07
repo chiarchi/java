@@ -1,5 +1,7 @@
 package it.spindox.tutor.spindoxspring.exception;
 
+
+
 public class ResourceNotFoundException extends RuntimeException {
 
         private static final long serialVersionUID = 1L;
